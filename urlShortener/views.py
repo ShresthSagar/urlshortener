@@ -44,16 +44,6 @@ class URLShortenerModelViewset(ModelViewSet):
             return Response(data={}, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-    @action(detail=True, methods=["get"])
-    def analytics(self, request, alias=None, *args, **kwargs):
-        import ipdb
-        ipdb.set_trace()
-        url_obj = URLShortener.objects.get(custom_alias=alias)
-        response_data = self.get_response_data_from_analytics_mapper(url_obj)
-        return Response({"data": response_data}, status=status.HTTP_200_OK)
-
-
     
     # Patch
     def partial_update(self, request, pk=None):
